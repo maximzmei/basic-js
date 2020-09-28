@@ -2,11 +2,10 @@ const CustomError = require("../extensions/custom-error");
 
 module.exports = function createDreamTeam(members) {
     if (!Array.isArray(members)) return false
-
     let result = ''
-    const sortedArray = members.map(function (e) {
-        return e.trim()
-    })
+    const sortedArray = members
+        .filter(e => typeof e === 'string')
+        .map(e => {return e.trim()})
 
     for (const iterator of sortedArray.sort()) {
         if (typeof iterator !== 'string') {
