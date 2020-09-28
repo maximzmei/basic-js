@@ -6,13 +6,14 @@ module.exports = function createDreamTeam(members) {
     const sortedArray = members
         .filter(e => typeof e === 'string')
         .map(e => {return e.trim()})
+        .sort()
 
-    for (const iterator of sortedArray.sort()) {
+    for (const iterator of sortedArray) {
         if (typeof iterator !== 'string') {
             continue
         } else {
             result += iterator[0]
         }
     }
-    return result.toUpperCase();
+    return result.split('').sort().join('').toUpperCase();
 };
